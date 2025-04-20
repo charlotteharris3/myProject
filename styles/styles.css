@@ -1,0 +1,41 @@
+p{
+    font-weight: bold;
+}
+
+#top{
+    text-decoration: underline;
+}
+
+.emphasizedText{
+    color:darkblue
+}
+
+.highlightedText{
+    font-style: italic;
+}
+
+body{
+    background-color:azure;
+    text-align: center;
+    font-family:'Times New Roman', Times, serif
+}
+
+.centered-list {
+    list-style-type: disc;
+    list-style-position: inside;
+    padding-left: 40px;
+    margin: 0 auto 20px auto;
+    text-align: center;
+    display: block;
+}
+
+.bottomphoto{
+    display: block;
+    margin: 20px auto;
+    max-width: 50%;  /* Adjust to desired size */
+    height: auto;
+}
+
+.photobelow{
+    font-style: italic;
+}

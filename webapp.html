@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Random Joke Generator!</title>
+  <style>
+    body {
+        background-image: url(assets/img/linlaughing.webp);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        padding: 100px 20px;
+    }
+
+    .joke-box {
+        background-color: #fff;
+        padding: 15px; /* Reduced padding */
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        max-width: 300px; /* Smaller max-width */
+        margin: 20px auto;
+    }
+
+    .joke {
+        font-size: 0.9rem; /* Smaller font size */
+        margin: 15px 0;
+        transition: opacity 0.5s ease-in-out;
+        opacity: 1;
+    }
+
+    .joke.fade-out {
+        opacity: 0;
+    }
+
+    button {
+        background-color: blue;
+        color: white;
+        padding: 8px 14px; /* Reduced button padding */
+        border: none;
+        border-radius: 8px;
+        font-size: 0.85rem; /* Smaller button text */
+        cursor: pointer;
+    }
+
+    .letsgo{
+        color: #fff;
+    }
+
+    button:hover {
+        background-color: #005fa3;
+    }
+
+    @media (max-width: 600px) {
+        .joke-box {
+            padding: 12px; /* Further reduced padding for smaller screens */
+        }
+
+        .joke {
+            font-size: 0.85rem; /* Slightly smaller font size for small screens */
+        }
+
+        button {
+            padding: 6px 12px; /* Adjusted button padding */
+            font-size: 0.8rem; /* Slightly smaller button font size */
+        }
+    }
+  </style>
+</head>
+<body>
+    <h3 style="color: white;">
+        <a href="scratch.html" style="color: white; text-decoration: underline;">Go to Scratch Page</a>
+      </h3>
+    <!-- Original Joke Box -->
+  <div class="joke-box">
+    <h1>Random Joke Generator</h1>
+    <p class="joke" id="joke">Click the button below for a joke!</p>
+    <button onclick="tellJoke()">Get a Joke</button>
+  </div>
+
+  <!-- Lin-Manuel Miranda Joke Box -->
+  <div class="joke-box">
+    <h1>Lin-Manuel Miranda Joke Generator</h1>
+    <p class="joke" id="linjoke">Click the button below for a Lin-Manuel Miranda joke!</p>
+    <button onclick="tellLinJoke()">Get a Lin-Manuel Joke</button>
+  </div>
+
+  <script>
+    const jokes = [
+      "Why don’t skeletons fight each other? They don’t have the guts.",
+      "I told my wife she was drawing her eyebrows too high. She looked surprised.",
+      "Why couldn’t the bicycle stand up by itself? It was two-tired.",
+      "Did you hear about the restaurant on the moon? Great food, no atmosphere.",
+      "I’m reading a book on anti-gravity. It’s impossible to put down.",
+      "Why don’t scientists trust atoms? Because they make up everything!",
+      "What do you call fake spaghetti? An impasta!",
+      "Why did the scarecrow win an award? Because he was outstanding in his field!",
+      "I used to play piano by ear, but now I use my hands.",
+      "Parallel lines have so much in common. It’s a shame they’ll never meet.",
+      "What did one ocean say to the other ocean? Nothing, they just waved.",
+      "Why did the golfer bring two pairs of pants? In case he got a hole in one.",
+      "I’m on a seafood diet. I see food and I eat it.",
+      "Why did the math book look sad? Because it had too many problems.",
+      "How do you organize a space party? You planet.",
+      "Why did the chicken go to the séance? To talk to the other side.",
+      "I bought some shoes from a drug dealer. I don’t know what he laced them with, but I was tripping all day.",
+      "Why don’t eggs tell jokes? They’d crack each other up.",
+      "How do cows stay up to date? They read the moos-paper.",
+      "I asked my dog what’s two minus two. He said nothing.",
+      "What do you call a belt made of watches? A waist of time.",
+      "I told my computer I needed a break, and now it won’t stop sending me Kit-Kat ads.",
+      "Why can’t you hear a pterodactyl go to the bathroom? Because the ‘P’ is silent.",
+      "Did you hear about the guy who invented Lifesavers? He made a mint.",
+      "Why did the man get hit by a bike every day? He was stuck in a vicious cycle."
+    ];
+
+    const linJokes = [
+      "Why did Lin-Manuel Miranda bring a pencil to the theater? To write his next hit!",
+      "What’s Lin-Manuel Miranda’s favorite breakfast? The Hamilton omelette, of course!",
+      "Why did Lin-Manuel Miranda write a rap about cats? Because he’s ‘Paws-itive’ it would be a hit!",
+      "How does Lin-Manuel Miranda start his mornings? With a ‘Run and ‘Hamilton’ grind’!",
+      "What do Lin-Manuel Miranda and a musical have in common? They both always steal the show!",
+      "Why did Lin-Manuel Miranda join a choir? Because he’s always in tune with his audience!",
+      "How do you know Lin-Manuel Miranda is in the room? He’ll tell you—it’s all about the show, baby!",
+      "What’s Lin-Manuel Miranda’s secret to success? A mix of rap, history, and a whole lot of heart!",
+      "Why did Lin-Manuel Miranda go to the bank? To check his ‘Hamilton’ dividends!",
+      "Why did Lin-Manuel Miranda start writing musicals? He just couldn’t ‘let it go’!"
+    ];
+
+    let lastIndex = -1;
+    let lastLinIndex = -1;
+
+    function tellJoke() {
+      const jokeEl = document.getElementById('joke');
+      jokeEl.classList.add('fade-out');
+
+      setTimeout(() => {
+        let randomIndex;
+        do {
+          randomIndex = Math.floor(Math.random() * jokes.length);
+        } while (randomIndex === lastIndex);
+        lastIndex = randomIndex;
+
+        jokeEl.innerText = jokes[randomIndex];
+        jokeEl.classList.remove('fade-out');
+      }, 300);
+    }
+
+    function tellLinJoke() {
+      const jokeEl = document.getElementById('linjoke');
+      jokeEl.classList.add('fade-out');
+
+      setTimeout(() => {
+        let randomIndex;
+        do {
+          randomIndex = Math.floor(Math.random() * linJokes.length);
+        } while (randomIndex === lastLinIndex);
+        lastLinIndex = randomIndex;
+
+        jokeEl.innerText = linJokes[randomIndex];
+        jokeEl.classList.remove('fade-out');
+      }, 300);
+    }
+  </script>
+
+</body>
+</html>
